@@ -121,12 +121,6 @@ command! -nargs=* -buffer RustEmitAsm call rust#Emit("asm", <q-args>)
 " See |:RustPlay| for docs
 command! -range=% RustPlay :call rust#Play(<count>, <line1>, <line2>, <f-args>)
 
-" See |:RustFmt| for docs
-command! -buffer RustFmt call rustfmt#Format()
-
-" See |:RustFmtRange| for docs
-command! -range -buffer RustFmtRange call rustfmt#FormatRange(<line1>, <line2>)
-
 " See |:RustInfo| for docs
 command! -bar RustInfo call rust#debugging#Info()
 
@@ -185,8 +179,6 @@ let b:undo_ftplugin = "
 
 " Code formatting on save
 augroup rust.vim.PreWrite
-    autocmd!
-    autocmd BufWritePre *.rs silent! call rustfmt#PreWrite()
 augroup END
 
 setlocal matchpairs+=<:>
